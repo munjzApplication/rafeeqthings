@@ -1,4 +1,5 @@
 import 'package:bloc_operations/view/counter_App/screen_counter.dart';
+import 'package:bloc_operations/view/favourites_App/favourites_home.dart';
 import 'package:bloc_operations/view/screen_capture/screen_capture.dart';
 import 'package:bloc_operations/view/slider_notification/screen_slider_notification.dart';
 import 'package:bloc_operations/view/todo_App/todoApp.dart';
@@ -28,10 +29,14 @@ class MyHome extends StatelessWidget {
                 text: "Image picker App",
                 context: context,
                 screenName: const ScreenCapture()),
-                 myHomeButton(
+            myHomeButton(
                 text: "ToDo App",
                 context: context,
-                screenName: const MyTODOApp())
+                screenName: const MyTODOApp()),
+            myHomeButton(
+                text: "Favourites App",
+                context: context,
+                screenName: const ScreenFavouritesHome())
           ],
         ),
       ),
