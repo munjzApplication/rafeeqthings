@@ -20,7 +20,23 @@ class _ScreenFavouritesHomeState extends State<ScreenFavouritesHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          BlocBuilder<FavoritesBloc, FavoritesState>(
+            builder: (context, state) {
+              return state.selectedfavoritesList.isEmpty
+                  ? const SizedBox()
+                  : IconButton(
+                      onPressed: () {
+                        context
+                            .read<FavoritesBloc>()
+                            .add(const DeleteSelectItemEvent());
+                      },
+                      icon: const Icon(Icons.delete));
+            },
+          )
+        ],
+      ),
       body: BlocBuilder<FavoritesBloc, FavoritesState>(
         builder: (context, state) {
           switch (state.listStatus) {
@@ -53,7 +69,12 @@ class _ScreenFavouritesHomeState extends State<ScreenFavouritesHome> {
                                         favoritesItemModel: item));
                               }
                             }),
-                        title: Text(state.favoritesList[index].value),
+                        title: Text(state.favoritesList[index].value,
+                            style: state.selectedfavoritesList.contains(item)
+                                ? const TextStyle(
+                                    decoration: TextDecoration.lineThrough,
+                                    color: Colors.red)
+                                : const TextStyle()),
                         trailing: IconButton(
                             onPressed: () {
                               final FavoritesItemModel newFavoritesItemModel =

@@ -20,8 +20,13 @@ class SelectItemEvent extends FavoritesEvent {
 
   const SelectItemEvent({required this.favoritesItemModel});
 }
+
 class UnSelectItemEvent extends FavoritesEvent {
   final FavoritesItemModel favoritesItemModel;
 
   const UnSelectItemEvent({required this.favoritesItemModel});
+}
+
+class DeleteSelectItemEvent extends FavoritesEvent {
+  const DeleteSelectItemEvent();
 }
