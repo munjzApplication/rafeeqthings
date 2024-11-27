@@ -1,10 +1,13 @@
+import 'package:bloc_operations/controller/Post_bloc/post_bloc.dart';
 import 'package:bloc_operations/view/counter_App/screen_counter.dart';
 import 'package:bloc_operations/view/favourites_App/favourites_home.dart';
+import 'package:bloc_operations/view/post_screen_App/post_screenApp.dart';
 import 'package:bloc_operations/view/screen_capture/screen_capture.dart';
 import 'package:bloc_operations/view/slider_notification/screen_slider_notification.dart';
 import 'package:bloc_operations/view/todo_App/todoApp.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyHome extends StatelessWidget {
   const MyHome({super.key});
@@ -25,10 +28,10 @@ class MyHome extends StatelessWidget {
                 text: "Slider And Switch App",
                 context: context,
                 screenName: const MySliderAndSwitch()),
-            myHomeButton(
-                text: "Image picker App",
-                context: context,
-                screenName: const ScreenCapture()),
+            // myHomeButton(
+            //     text: "Image picker App",
+            //     context: context,
+            //     screenName: const ScreenCapture()),
             myHomeButton(
                 text: "ToDo App",
                 context: context,
@@ -36,7 +39,14 @@ class MyHome extends StatelessWidget {
             myHomeButton(
                 text: "Favourites App",
                 context: context,
-                screenName: const ScreenFavouritesHome())
+                screenName: const ScreenFavouritesHome()),
+            myHomeButton(
+                text: "Post App",
+                context: context,
+                screenName: BlocProvider(
+                  create: (context) => PostBloc(),
+                  child: const ScrrenPostApp(),
+                ))
           ],
         ),
       ),

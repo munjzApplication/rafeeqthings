@@ -1,4 +1,5 @@
 import 'package:bloc_operations/controller/Counter_bloc/counter_bloc.dart';
+import 'package:bloc_operations/controller/Post_bloc/post_bloc.dart';
 import 'package:bloc_operations/controller/favorites_bloc/favorites_bloc.dart';
 import 'package:bloc_operations/controller/image_picker/image_picker_bloc.dart';
 import 'package:bloc_operations/controller/switch_slider_bloc/switch_and_slider_bloc.dart';
@@ -20,23 +21,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => CounterBloc(),
-        ),
+        // BlocProvider(
+        //   create: (context) => CounterBloc(),
+        // ),
         BlocProvider(
           create: (context) => SwitchAndSliderBloc(),
         ),
-        BlocProvider(
-          create: (context) =>
-              ImagePickerBloc(imagePickerUntils: ImagePickerUntils()),
-        ),
+        // BlocProvider(
+        //   create: (context) =>
+        //       ImagePickerBloc(imagePickerUntils: ImagePickerUntils()),
+        // ),
         BlocProvider(
           create: (context) => TodoBloc(),
         ),
         BlocProvider(
           create: (context) =>
               FavoritesBloc(favoriteRepository: FavoriteRepository()),
-        )
+        ),
+        // BlocProvider(
+        //   create: (context) => PostBloc(),
+        // )
       ],
       child: MaterialApp(
         themeMode: ThemeMode.dark,
@@ -44,7 +48,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           brightness: Brightness.dark,
           // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-         // useMaterial3: false,
+          // useMaterial3: false,
         ),
         home: const MyHome(),
       ),
