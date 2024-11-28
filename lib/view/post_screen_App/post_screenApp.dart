@@ -49,14 +49,14 @@ class _ScrrenPostAppState extends State<ScrrenPostApp> {
                       return Center(
                           child: Text(state.notFoundMessage.toString()));
                     } else {
-                      return ListView.separated(
+                      return ListView.separated(///okkee alle machuuu
                           itemBuilder: (context, index) {
                             if (state.tempModelList.isEmpty) {
                               Postmodel data = state.postModelList[index];
                               return Card(
                                   child: ListTile(
                                 leading: CircleAvatar(
-                                  child: Center(
+                                  child: Center(//
                                     child: Text(data.id!.toString()),
                                   ),
                                 ),
