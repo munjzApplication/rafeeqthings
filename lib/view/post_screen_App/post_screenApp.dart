@@ -49,7 +49,7 @@ class _ScrrenPostAppState extends State<ScrrenPostApp> {
                       return Center(
                           child: Text(state.notFoundMessage.toString()));
                     } else {
-                      return ListView.separated(
+                      return ListView.separated(///okkee alle machuuu
                           itemBuilder: (context, index) {
                             if (state.tempModelList.isEmpty) {
                               Postmodel data = state.postModelList[index];
