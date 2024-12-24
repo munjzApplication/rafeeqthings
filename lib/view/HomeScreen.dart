@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:bloc_operations/controller/Post_bloc/post_bloc.dart';
 import 'package:bloc_operations/view/counter_App/screen_counter.dart';
 import 'package:bloc_operations/view/favourites_App/favourites_home.dart';
+import 'package:bloc_operations/view/freezed_app/freezed_home.dart';
 import 'package:bloc_operations/view/post_screen_App/post_screenApp.dart';
 import 'package:bloc_operations/view/screen_capture/screen_capture.dart';
 import 'package:bloc_operations/view/slider_notification/screen_slider_notification.dart';
@@ -46,7 +49,11 @@ class MyHome extends StatelessWidget {
                 screenName: BlocProvider(
                   create: (context) => PostBloc(),
                   child: const ScrrenPostApp(),
-                ))
+                )),
+            myHomeButton(
+                text: "Freezed App",
+                context: context,
+                screenName: Homefreezed()),
           ],
         ),
       ),
