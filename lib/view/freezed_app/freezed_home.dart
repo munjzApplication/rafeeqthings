@@ -1,3 +1,4 @@
+import 'package:bloc_operations/data/exception/app_exceptions.dart';
 import 'package:bloc_operations/model/userModel/userModel.dart';
 import 'package:bloc_operations/view/homeScreen.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +18,10 @@ class Homefreezed extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       floatingActionButton: FloatingActionButton(onPressed: () {
-        Map<String, dynamic> data = {
-          "name": "mohammed",
-        };
+        throw NoInternetException("no internet connection");
+        // Map<String, dynamic> data = {
+        //   "name": "mohammed",
+        // };
 
         // UserModel model = UserModel.fromJson(data);
         // print("valueeee : ${model.name}");
@@ -29,7 +31,7 @@ class Homefreezed extends StatelessWidget {
       body: ListView.separated(
           itemBuilder: (context, index) {
             return ListTile(
-              title: Text(usersList[index].name .toString()),
+              title: Text(usersList[index].name.toString()),
             );
           },
           separatorBuilder: (context, index) => const SizedBox(
@@ -39,5 +41,3 @@ class Homefreezed extends StatelessWidget {
     );
   }
 }
-
-
