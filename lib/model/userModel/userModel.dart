@@ -10,6 +10,7 @@ class UserModel with _$UserModel {
   // Use a factory constructor here
   const factory UserModel({
     String? name,
+     String? id,
   }) = _UserModel;
 
   // Add the `fromJson` factory method for JSON serialization

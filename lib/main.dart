@@ -5,8 +5,9 @@ import 'package:bloc_operations/controller/image_picker/image_picker_bloc.dart';
 import 'package:bloc_operations/controller/switch_slider_bloc/switch_and_slider_bloc.dart';
 import 'package:bloc_operations/controller/todo_bloc/todo_bloc.dart';
 import 'package:bloc_operations/repository/favorite_repository.dart';
-import 'package:bloc_operations/untils/image_picker/image_picker.dart';
-import 'package:bloc_operations/view/homeScreen.dart';
+// import 'package:bloc_operations/untils/image_picker/image_picker.dart';
+// import 'package:bloc_operations/view/homeScreen.dart';
+import 'package:bloc_operations/view/splash_screen/screen_splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
           // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           // useMaterial3: false,
         ),
-        home: const MyHome(),
+        home: const ScreenSplash(),
       ),
     );
   }
