@@ -28,8 +28,8 @@ class PasswordInputWidget extends StatelessWidget {
             if (value!.isEmpty) {
               return "enter passwor";
             }
-            if (value.length < 6) {
-              return "enter morethan 6 character";
+            if (value.length < 5) {
+              return "enter morethan 5 character";
             }
             return null;
           },

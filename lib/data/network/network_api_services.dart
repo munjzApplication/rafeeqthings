@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'package:bloc_operations/config/routes/app_urls.dart';
 import 'package:bloc_operations/data/exception/app_exceptions.dart';
 import 'package:bloc_operations/data/network/base_api_services.dart';
 import 'package:http/http.dart' as http;
@@ -29,7 +30,11 @@ class NetworkApiServices extends BaseApiServices {
 
     try {
       final response = await http
-          .post(Uri.parse(url), body: data)
+          .post(
+            Uri.parse(url),
+            body: data,
+            headers: AppHeaders.mainHeader,
+          )
           .timeout(const Duration(seconds: 50));
 
       jsonResponse = returnResponse(response);

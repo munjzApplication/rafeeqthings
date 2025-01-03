@@ -6,7 +6,7 @@ class LoginRepository {
 
   final _api =NetworkApiServices();
 
-  Future<Personalmodel> LoginApi (dynamic data)async{
+  Future<Personalmodel> loginApi (dynamic data)async{
     
     final response = await _api.postApi(AppUrls.loginAPI, data);
 

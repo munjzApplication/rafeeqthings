@@ -1,4 +1,6 @@
 // import 'package:bloc/bloc.dart';
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
 import 'package:bloc_operations/repository/auth/login_repository.dart';
 import 'package:bloc_operations/untils/enum/post_Enum.dart';
@@ -31,8 +33,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
     emit(state.copywith(postAPIstatus: PostAPIstatus.loading));
 
-    await loginRepository.LoginApi(data).then((value) {
+    await loginRepository.loginApi(jsonEncode(data)).then((value) {
       if (value.error.isNotEmpty) {
+        print(value.error.toString());
         emit(state.copywith(
             message: value.error.toString(),
             postAPIstatus: PostAPIstatus.error));
@@ -43,6 +46,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         print(value.token);
       }
     }).onError((error, trackTrase) {
+      print(error.toString());
       emit(state.copywith(
           message: error.toString(), postAPIstatus: PostAPIstatus.error));
     });
