@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:bloc_operations/repository/auth/login_repository.dart';
+import 'package:bloc_operations/services/session_manager/session_controller.dart';
 import 'package:bloc_operations/untils/enum/post_Enum.dart';
 import 'package:equatable/equatable.dart';
 // import 'package:freezed_annotation/freezed_annotation.dart';
@@ -13,7 +14,7 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginRepository loginRepository;
-  
+
   LoginBloc({required this.loginRepository}) : super(const LoginState()) {
     on<EmailChanged>(_onEmailchanged);
     on<PasswordChanged>(_onPasswordchanged);
@@ -34,13 +35,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
     emit(state.copywith(postAPIstatus: PostAPIstatus.loading));
 
-    await loginRepository.loginApi(jsonEncode(data)).then((value) {
+    await loginRepository.loginApi(jsonEncode(data)).then((value) async {
       if (value.error.isNotEmpty) {
         print(value.error.toString());
         emit(state.copywith(
             message: value.error.toString(),
             postAPIstatus: PostAPIstatus.error));
       } else {
+        await SessionController().SaveUserinPreference(value);
+        await SessionController().getUserFromPreference();
         emit(state.copywith(
             message: "Login successfull  ${value.token}",
             postAPIstatus: PostAPIstatus.success));
