@@ -1,6 +1,7 @@
 import 'package:bloc_operations/controller/login_bloc/login_bloc.dart';
 import 'package:bloc_operations/model/personalModel/personal_model.dart';
 import 'package:bloc_operations/untils/enum/post_Enum.dart';
+import 'package:bloc_operations/untils/flush_bar_helper/flush_bar_helper.dart';
 import 'package:bloc_operations/view/HomeScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,19 +18,14 @@ class MyLoginButton extends StatelessWidget {
           previous.postAPIstatus != current.postAPIstatus,
       listener: (context, state) {
         if (state.postAPIstatus == PostAPIstatus.error) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(content: Text(state.message.toString())));
+          FlushBarHelper.fleshbarErrorMessage(
+              context, state.message);
+         
         }
+      
         if (state.postAPIstatus == PostAPIstatus.success) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(content: Text(state.message.toString())));
-        }
-        if (state.postAPIstatus == PostAPIstatus.loading) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(const SnackBar(content: Text("API uploading")));
+         FlushBarHelper.fleshbarSuccessMessage(
+              context,"Login SuccessFull");
         }
       },
       child: BlocBuilder<LoginBloc, LoginState>(
@@ -49,7 +45,7 @@ class MyLoginButton extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => const MyHome(),
-                            ));
+                            )).then((value) {});
                       },
                     );
                   }

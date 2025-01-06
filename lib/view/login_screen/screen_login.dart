@@ -1,5 +1,6 @@
 // import 'package:bloc_operations/view/homeScreen.dart';
 import 'package:bloc_operations/controller/login_bloc/login_bloc.dart';
+import 'package:bloc_operations/repository/auth/login_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'widgets/widgets.dart';
@@ -21,7 +22,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
   @override
   void initState() {
     super.initState();
-    loginBloc = LoginBloc();
+    loginBloc = LoginBloc(loginRepository: LoginRepository());
   }
 
   @override

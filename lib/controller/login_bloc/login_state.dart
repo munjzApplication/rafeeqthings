@@ -16,7 +16,7 @@ class LoginState extends Equatable {
   final String password;
   final String message;
 
-  final PostAPIstatus postAPIstatus;
+   final PostAPIstatus postAPIstatus;
 
   LoginState copywith(
       {String? email,

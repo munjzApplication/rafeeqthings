@@ -12,8 +12,9 @@ part 'login_state.dart';
 // part 'login_bloc.freezed.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginRepository loginRepository = LoginRepository();
-  LoginBloc() : super(const LoginState()) {
+  LoginRepository loginRepository;
+  
+  LoginBloc({required this.loginRepository}) : super(const LoginState()) {
     on<EmailChanged>(_onEmailchanged);
     on<PasswordChanged>(_onPasswordchanged);
     on<LoginApi>(_onLoginApi);
