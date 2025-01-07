@@ -25,6 +25,11 @@ class MyLoginButton extends StatelessWidget {
 
         if (state.postAPIstatus == PostAPIstatus.success) {
           FlushBarHelper.fleshbarSuccessMessage(context, "Login SuccessFull");
+          Navigator.push(
+              context,
+              CupertinoPageRoute(
+                builder: (context) => const MyHome(),
+              ));
         }
       },
       child: BlocBuilder<LoginBloc, LoginState>(
@@ -35,13 +40,7 @@ class MyLoginButton extends StatelessWidget {
               onPressed: () {
                 if (formKey.currentState!.validate()) {
                   context.read<LoginBloc>().add(const LoginApi());
-                  Timer(
-                      const Duration(seconds: 4),
-                      () => Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                            builder: (context) => const MyHome(),
-                          )));
+                  // ignore: unrelated_type_equality_checks
                 }
               },
               child: state.postAPIstatus == PostAPIstatus.loading

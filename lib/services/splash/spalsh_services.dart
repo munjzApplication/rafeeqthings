@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc_operations/services/session_manager/session_controller.dart';
+import 'package:bloc_operations/view/Authentication/authentication_screen.dart';
 import 'package:bloc_operations/view/HomeScreen.dart';
-import 'package:bloc_operations/view/login_screen/screen_login.dart';
+import 'package:bloc_operations/view/Authentication/login_screen/screen_login.dart';
 import 'package:flutter/cupertino.dart';
 
 class SpalshServices {
@@ -21,7 +22,8 @@ class SpalshServices {
             const Duration(seconds: 4),
             () => Navigator.pushAndRemoveUntil(
                   context,
-                  CupertinoPageRoute(builder: (context) => const ScreenLogin()),
+                  CupertinoPageRoute(
+                      builder: (context) => const AuthenticationScreen()),
                   (route) => false,
                 ));
       }
@@ -30,7 +32,8 @@ class SpalshServices {
           const Duration(seconds: 4),
           () => Navigator.pushAndRemoveUntil(
                 context,
-                CupertinoPageRoute(builder: (context) => const ScreenLogin()),
+                CupertinoPageRoute(
+                    builder: (context) => const AuthenticationScreen()),
                 (route) => false,
               ));
     });

@@ -10,13 +10,13 @@ class ScreenSplash extends StatefulWidget {
 }
 
 class _ScreenSplashState extends State<ScreenSplash> {
-  SpalshServices _spalshServices = SpalshServices();
+  SpalshServices spalshServices = SpalshServices();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _spalshServices.isLogin(context);
+    spalshServices.isLogin(context);
   }
 
   @override

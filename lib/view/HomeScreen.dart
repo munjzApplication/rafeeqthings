@@ -3,10 +3,11 @@ import 'dart:developer';
 import 'package:bloc_operations/controller/Post_bloc/post_bloc.dart';
 import 'package:bloc_operations/services/session_manager/session_controller.dart';
 import 'package:bloc_operations/services/storage/local_storage.dart';
+import 'package:bloc_operations/view/Authentication/authentication_screen.dart';
 import 'package:bloc_operations/view/counter_App/screen_counter.dart';
 import 'package:bloc_operations/view/favourites_App/favourites_home.dart';
 import 'package:bloc_operations/view/freezed_app/freezed_home.dart';
-import 'package:bloc_operations/view/login_screen/screen_login.dart';
+import 'package:bloc_operations/view/Authentication/login_screen/screen_login.dart';
 import 'package:bloc_operations/view/post_screen_App/post_screenApp.dart';
 import 'package:bloc_operations/view/screen_capture/screen_capture.dart';
 import 'package:bloc_operations/view/slider_notification/screen_slider_notification.dart';
@@ -78,7 +79,7 @@ class _MyHomeState extends State<MyHome> {
                       Navigator.pushAndRemoveUntil(
                         context,
                         CupertinoPageRoute(
-                            builder: (context) => const ScreenLogin()),
+                            builder: (context) => const AuthenticationScreen()),
                         (route) => false,
                       );
                     });
